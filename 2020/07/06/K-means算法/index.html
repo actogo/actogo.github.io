@@ -15,18 +15,18 @@
 <meta property="og:site_name" content="李宇添的个人博客">
 <meta property="og:description" content="开始1、研究图像分割的背景及意义我们生活中很多照片都是包括两个部分：前景和背景。但是人们一般只会对前景感兴趣，所以我们需要一个工具把前景部分从图片中提取出来以便人们对其加以利用，而图片分割技术便是一个很好的工具，可以根据像素点的不同采用相对应的算法就可以完整地把前景部分提取出来。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/聚类算法流程图.jpg">
-<meta property="og:image" content="http://example.com/海贼王1.jpg">
-<meta property="og:image" content="http://example.com/%E8%81%9A%E7%B1%BB.png">
-<meta property="og:image" content="http://example.com/%E5%88%87%E5%89%B21.png">
-<meta property="og:image" content="http://example.com/%E5%88%87%E5%89%B22.png">
-<meta property="og:image" content="http://example.com/%E5%88%87%E5%89%B23.png">
+<meta property="og:image" content="http://example.com/2020/07/06/K-means%E7%AE%97%E6%B3%95/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E5%9B%BE.jpg">
+<meta property="og:image" content="http://example.com/2020/07/06/K-means%E7%AE%97%E6%B3%95/%E6%B5%B7%E8%B4%BC%E7%8E%8B1.jpg">
+<meta property="og:image" content="http://example.com/2020/07/06/K-means%E7%AE%97%E6%B3%95/%E8%81%9A%E7%B1%BB.png">
+<meta property="og:image" content="http://example.com/2020/07/06/K-means%E7%AE%97%E6%B3%95/%E5%88%87%E5%89%B21.png">
+<meta property="og:image" content="http://example.com/2020/07/06/K-means%E7%AE%97%E6%B3%95/%E5%88%87%E5%89%B22.png">
+<meta property="og:image" content="http://example.com/2020/07/06/K-means%E7%AE%97%E6%B3%95/%E5%88%87%E5%89%B23.png">
 <meta property="article:published_time" content="2020-07-06T01:18:56.000Z">
-<meta property="article:modified_time" content="2021-05-29T11:18:33.085Z">
+<meta property="article:modified_time" content="2021-06-10T06:00:33.631Z">
 <meta property="article:author" content="李宇添">
 <meta property="article:tag" content="聚类算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/聚类算法流程图.jpg">
+<meta name="twitter:image" content="http://example.com/2020/07/06/K-means%E7%AE%97%E6%B3%95/%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E5%9B%BE.jpg">
   
     <link rel="alternative" href="/atom.xml" title="李宇添的个人博客" type="application/atom+xml">
   
@@ -232,21 +232,17 @@
         <h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><h2 id="1、研究图像分割的背景及意义"><a href="#1、研究图像分割的背景及意义" class="headerlink" title="1、研究图像分割的背景及意义"></a>1、研究图像分割的背景及意义</h2><p>我们生活中很多照片都是包括两个部分：前景和背景。但是人们一般只会对前景感兴趣，所以我们需要一个工具把前景部分从图片中提取出来以便人们对其加以利用，而图片分割技术便是一个很好的工具，可以根据像素点的不同采用相对应的算法就可以完整地把前景部分提取出来。<span id="more"></span></p>
 <h2 id="2、图像分割采用的算法"><a href="#2、图像分割采用的算法" class="headerlink" title="2、图像分割采用的算法"></a>2、图像分割采用的算法</h2><p>本文采用的算法是大名鼎鼎的K-means算法,也叫K均值算法，是一种动态聚类算法。</p>
 <h3 id="K-means算法简介"><a href="#K-means算法简介" class="headerlink" title="K-means算法简介"></a>K-means算法简介</h3><p>K-means算法是一种迭代算法，通过反复修改聚类结果来进行优化，以达到最优的聚类结果。</p>
-<img src="/聚类算法流程图.jpg" alt="聚类流程图" />
-
-
-
+<p><img src="%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%E5%9B%BE.jpg"></p>
 <h3 id="K-means算法步骤"><a href="#K-means算法步骤" class="headerlink" title="K-means算法步骤"></a>K-means算法步骤</h3><p>(1 )选取k个样本点为初始聚类中心<br>(2)使用最近邻规则将所有样本分配到各聚类中心所代表的k类中<br>(3)计算各类的重心(均值向量)，并令该重心为新的聚类中心，因为在该步中要计算k个聚类中的样本均值，故称作k-均值算法<br>(4)如果新的聚类中心与原聚类中心不一致，则表示尚未得到最佳聚类结果，返回步骤(2)，继续迭代计算;<br>(5)如果新的聚类中心与原聚类中心一致，则迭代过程结束，此时的聚类结果就是最优聚类结果。</p>
 <h2 id="3、具体代码实现"><a href="#3、具体代码实现" class="headerlink" title="3、具体代码实现"></a>3、具体代码实现</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">%%%%%%%%%%%%%%%%%%%%%代码部分%%%%%%%%%%%%%%%%%%%%%</span><br><span class="line">clc</span><br><span class="line">clear</span><br><span class="line">close all</span><br><span class="line">I = imread(&#x27;C:/Users/USER LYT/Documents/MATLAB/模式识别/图片/海贼王1.jpg&#x27;); </span><br><span class="line">[M,N,L] = size(I);</span><br><span class="line">%构造样本空间</span><br><span class="line">A = reshape(I(:, :, 1), M*N, 1);    % 将RGB分量各转为kmeans使用的数据格式n行，一样一样本</span><br><span class="line">B = reshape(I(:, :, 2), M*N, 1);</span><br><span class="line">C = reshape(I(:, :, 3), M*N, 1);</span><br><span class="line">K = 3;</span><br><span class="line">dat = [A B C ];  % 三个分量组成样本的特征，每个样本有3个属性值，共width*height个样本</span><br><span class="line"></span><br><span class="line">c3 = kmeans(double(dat), K);    % 使用聚类算法分为K类</span><br><span class="line">r3 = reshape(c3, M, N);     % 反向转化为图片形式</span><br><span class="line">figure, imshow(label2rgb(r3))   % 显示分割结果</span><br><span class="line">title(&#x27;调用matlab库函数&#x27;);</span><br><span class="line"></span><br><span class="line">labels=reshape(c3, M, N);</span><br><span class="line">segmented_images = cell( 1 ,K);</span><br><span class="line">rgb_label = repmat(labels,[1 1 3]);</span><br><span class="line">for k= 1:K</span><br><span class="line">color= I; </span><br><span class="line">color(rgb_label~= k)= 0;</span><br><span class="line">segmented_images &#123;k&#125; = color;</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">%显示分割结果</span><br><span class="line">figure,imshow(segmented_images &#123;1&#125;),title(&#x27;分割结果1&#x27;);</span><br><span class="line">figure,imshow(segmented_images &#123;2&#125;),title(&#x27;分割结果2&#x27;);</span><br><span class="line">figure,imshow(segmented_images &#123;3&#125;);title(&#x27;分割结果3&#x27;);</span><br></pre></td></tr></table></figure>
 
 
 
-<h2 id="4、实验结果"><a href="#4、实验结果" class="headerlink" title="4、实验结果"></a>4、实验结果</h2><img src="/海贼王1.jpg" alt="原图像" style="zoom:50%;" />
-
-<p><img src="/%E8%81%9A%E7%B1%BB.png" alt="分类标记"></p>
-<p><img src="/%E5%88%87%E5%89%B21.png" alt="切割1"></p>
-<p><img src="/%E5%88%87%E5%89%B22.png" alt="切割2"></p>
-<p><img src="/%E5%88%87%E5%89%B23.png" alt="切割3"></p>
+<h2 id="4、实验结果"><a href="#4、实验结果" class="headerlink" title="4、实验结果"></a>4、实验结果</h2><p><img src="%E6%B5%B7%E8%B4%BC%E7%8E%8B1.jpg" alt="原图片"></p>
+<p><img src="%E8%81%9A%E7%B1%BB.png" alt="分类标记"></p>
+<p><img src="%E5%88%87%E5%89%B21.png" alt="切割1"></p>
+<p><img src="%E5%88%87%E5%89%B22.png" alt="切割2"></p>
+<p><img src="%E5%88%87%E5%89%B23.png" alt="切割3"></p>
 <h1 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h1>
       
 
